@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DigiManager</string>
+    <string name="app_project_name">digiManager</string>
+    <string name="author_name">-By Bhawna Chauhan</string>
 </resources>
