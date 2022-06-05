@@ -11,6 +11,13 @@ class IntroActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
-
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
+        Handler().postDelayed({
+            startActivity(Intent(this,MainActivity::class.java))
+            finish()
+        },2500)
     }
 }
