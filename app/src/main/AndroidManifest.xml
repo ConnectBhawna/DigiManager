@@ -14,11 +14,15 @@
         android:theme="@style/Theme.DigiManager"
         tools:targetApi="31">
         <activity
+            android:name=".SignInActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".SignUpScreen"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme"/>
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".IntroActivity"
             android:exported="true"

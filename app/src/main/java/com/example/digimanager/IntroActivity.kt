@@ -17,12 +17,9 @@ class IntroActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
-
-
-       // Handler().postDelayed({
-      //      startActivity(Intent(this,MainActivity::class.java))
-      //      finish()
-      //  },2500)
+        btn_sign_in_intro.setOnClickListener {
+            startActivity(Intent(this@IntroActivity, SignInActivity::class.java))
+        }
 
         btn_sign_up_intro.setOnClickListener {
             startActivity(Intent(this@IntroActivity, SignUpScreen::class.java))

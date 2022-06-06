@@ -29,4 +29,6 @@
     <dimen name="et_text_size">16sp</dimen>
     <dimen name="authentication_screen_til_marginTop">20dp</dimen>
 
+    <dimen name="authentication_screen_marginTop">60dp</dimen>
+
 </resources>
