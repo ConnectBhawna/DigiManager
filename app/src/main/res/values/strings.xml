@@ -7,4 +7,9 @@
     <string name="intro_text_description">Collaborate and Plan Together Across Multiple Devices on DigiManager`s Minimalist Interface.</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
+
+    <string name="sign_up_description_text">Enter your name, email id and password, to register with us.</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

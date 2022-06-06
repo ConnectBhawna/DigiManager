@@ -19,9 +19,13 @@ class IntroActivity : AppCompatActivity() {
         )
 
 
-        Handler().postDelayed({
-            startActivity(Intent(this,MainActivity::class.java))
-            finish()
-        },2500)
+       // Handler().postDelayed({
+      //      startActivity(Intent(this,MainActivity::class.java))
+      //      finish()
+      //  },2500)
+
+        btn_sign_up_intro.setOnClickListener {
+            startActivity(Intent(this@IntroActivity, SignUpScreen::class.java))
+        }
     }
 }
