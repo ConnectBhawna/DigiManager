@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "767278808596",
+    "project_id": "digimanager-d0b40",
+    "storage_bucket": "digimanager-d0b40.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:767278808596:android:393d480f4937fa185ab101",
+        "android_client_info": {
+          "package_name": "com.example.digimanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "767278808596-0bf0tr1h0kfnui0g4vh25e2e301vd4gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTEf1cUpoJtKF65Ed4_OIZIzaIKb1ZWEo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "767278808596-0bf0tr1h0kfnui0g4vh25e2e301vd4gi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

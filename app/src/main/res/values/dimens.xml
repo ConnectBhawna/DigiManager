@@ -31,4 +31,9 @@
 
     <dimen name="authentication_screen_marginTop">60dp</dimen>
 
+    <dimen name="progress_dialog_content_padding">10dp</dimen>
+    <dimen name="progress_bar_size">50dp</dimen>
+    <dimen name="progress_text_marginStart">16dp</dimen>
+    <dimen name="progress_text_size">16sp</dimen>
+
 </resources>

@@ -10,4 +10,6 @@
     <color name="secondary_text_color">#748089</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="snackbar_error_color1">#F72400</color>
 </resources>
