@@ -1,12 +1,12 @@
 package com.example.digimanager.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.digimanager.R
-import com.example.digimanager.R.drawable.ic_black_color_back_24dp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_sign_up_screen.*
 
 class SignUpScreen : BaseActivity() {
@@ -46,12 +46,32 @@ class SignUpScreen : BaseActivity() {
         val password: String = et_password.text.toString().trim { it <= ' ' }
 
         if (validateForm(name, email, password)) {
+            showProgressDialog(resources.getString(R.string.please_wait))
+            FirebaseAuth.getInstance()
+                .createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    hideProgressDialog()
+                    if (task.isSuccessful) {
+                        val firebaseUser: FirebaseUser = task.result!!.user!!
+                        val registeredEmail = firebaseUser.email!!
+                        Toast.makeText(
+                            this,
+                            "$name you have succesfully " +
+                                    "registered the email address $registeredEmail",
+                            Toast.LENGTH_LONG
+                        ).show()
 
-            Toast.makeText(
-                this@SignUpScreen,
-                "Now we can register a new user.",
-                Toast.LENGTH_SHORT
-            ).show()
+                        FirebaseAuth.getInstance().signOut()
+                        finish()
+                    } else {
+                        Toast.makeText(
+                            this,
+                            task.exception!!.message, Toast.LENGTH_SHORT
+                        )
+                            .show()
+
+                    }
+                }
         }
     }
 
