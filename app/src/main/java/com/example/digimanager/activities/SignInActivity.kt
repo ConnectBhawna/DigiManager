@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Toast
 import com.example.digimanager.R
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.auth.User
 import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up_screen.*
 
@@ -38,6 +39,12 @@ class SignInActivity : BaseActivity() {
 
         toolbar_sign_in_activity.setNavigationOnClickListener { onBackPressed() }
 
+    }
+
+    fun signInSuccess (user: com.example.digimanager.models.User?){
+        hideProgressDialog()
+        startActivity(Intent(this,MainActivity::class.java))
+        finish()
     }
     /**
      * A function for Sign-In using the registered user using the email and password.
