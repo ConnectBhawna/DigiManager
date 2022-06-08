@@ -56,7 +56,7 @@ class SignUpScreen : BaseActivity() {
                         val registeredEmail = firebaseUser.email!!
                         Toast.makeText(
                             this,
-                            "$name you have succesfully " +
+                            "$name you have successfully " +
                                     "registered the email address $registeredEmail",
                             Toast.LENGTH_LONG
                         ).show()
@@ -66,7 +66,7 @@ class SignUpScreen : BaseActivity() {
                     } else {
                         Toast.makeText(
                             this,
-                            task.exception!!.message, Toast.LENGTH_SHORT
+                            "Registration failed ", Toast.LENGTH_SHORT
                         )
                             .show()
 
