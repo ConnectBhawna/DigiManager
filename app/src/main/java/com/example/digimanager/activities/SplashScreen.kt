@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.ImageView
 import android.view.animation.AnimationUtils
 import com.example.digimanager.R
+import com.example.digimanager.firestore.FirestoreClass
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +26,15 @@ class SplashScreen : AppCompatActivity() {
         backgroundImg.startAnimation(sideAnimation)
 
         Handler().postDelayed({
-            startActivity(Intent(this, IntroActivity::class.java))
+
+            var currentUserID = FirestoreClass().getCurrentUserId()
+            if(currentUserID.isNotEmpty()){
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+            else{
+                startActivity(Intent(this, IntroActivity::class.java))
+
+            }
             finish()
         },2500)
     }
