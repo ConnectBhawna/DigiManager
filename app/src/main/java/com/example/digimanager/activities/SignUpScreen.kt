@@ -5,6 +5,9 @@ import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
 import com.example.digimanager.R
+import com.example.digimanager.firestore.FirestoreClass
+import com.example.digimanager.models.User
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_sign_up_screen.*
@@ -23,6 +26,17 @@ class SignUpScreen : BaseActivity() {
         btn_sign_up.setOnClickListener{
             registerUser()
         }
+    }
+
+    fun userRegisteredSuccess(){
+        Toast.makeText(
+            this@SignUpScreen,
+            "You have successfully registered.",
+            Toast.LENGTH_SHORT
+        ).show()
+        hideProgressDialog()
+        FirebaseAuth.getInstance().signOut()
+        finish()
     }
 
     private fun setupActionBar() {
@@ -50,19 +64,16 @@ class SignUpScreen : BaseActivity() {
             FirebaseAuth.getInstance()
                 .createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener { task ->
-                    hideProgressDialog()
+
                     if (task.isSuccessful) {
                         val firebaseUser: FirebaseUser = task.result!!.user!!
                         val registeredEmail = firebaseUser.email!!
-                        Toast.makeText(
-                            this,
-                            "$name you have successfully " +
-                                    "registered the email address $registeredEmail",
-                            Toast.LENGTH_LONG
-                        ).show()
+                        val user = User(
+                            firebaseUser.uid, name, registeredEmail
+                        )
+                        FirestoreClass().registerUser(this@SignUpScreen, user)
 
-                        FirebaseAuth.getInstance().signOut()
-                        finish()
+
                     } else {
                         Toast.makeText(
                             this,
