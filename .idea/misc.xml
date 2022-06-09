@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/edit_text_shape.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/nav_header_main_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/shape_button_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_border_shape_button_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/layout-v23/activity_intro.xml" value="0.17" />
@@ -14,7 +15,11 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.18023255813953487" />
         <entry key="app/src/main/res/layout/activity_sign_up_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/content_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
       </map>
     </option>
   </component>
