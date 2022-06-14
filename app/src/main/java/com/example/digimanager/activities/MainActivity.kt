@@ -7,11 +7,15 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import com.bumptech.glide.Glide
 import com.example.digimanager.R
+import com.example.digimanager.firestore.FirestoreClass
+import com.example.digimanager.models.User
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +26,8 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         setupActionBar()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        FirestoreClass().signInUser(this)
     }
 
     private fun setupActionBar(){
@@ -52,6 +58,19 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         else{
             doubleBackToExit()
         }
+    }
+
+    fun updateNavigationUserDetails(user : User){
+
+        Glide
+            .with(this)
+            .load(user.image)
+            .centerCrop()
+            .placeholder(R.drawable.ic_user_place_holder)
+            .into(iv_user_image);
+
+        tv_username.text = user.name
+
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
