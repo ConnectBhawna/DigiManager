@@ -47,4 +47,13 @@
     <dimen name="nav_divider_height">0.5dp</dimen>
 
 
+    <dimen name="my_profile_screen_content_marginStartEnd">16dp</dimen>
+    <dimen name="my_profile_screen_content_marginTopBottom">10dp</dimen>
+    <dimen name="my_profile_screen_content_padding">16dp</dimen>
+    <dimen name="my_profile_user_image_size">100dp</dimen>
+    <dimen name="my_profile_name_til_marginTop">25dp</dimen>
+    <dimen name="my_profile_et_email_marginTop">20dp</dimen>
+    <dimen name="my_profile_et_mobile_marginTop">20dp</dimen>
+    <dimen name="my_profile_btn_update_marginTop">30dp</dimen>
+
 </resources>

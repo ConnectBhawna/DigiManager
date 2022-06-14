@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_introduct.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_my_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.18023255813953487" />
         <entry key="app/src/main/res/layout/activity_sign_up_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
