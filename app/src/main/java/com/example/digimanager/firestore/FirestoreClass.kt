@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
 import com.example.digimanager.activities.MainActivity
+import com.example.digimanager.activities.MyProfileActivity
 import com.example.digimanager.activities.SignInActivity
 import com.example.digimanager.activities.SignUpScreen
 import com.example.digimanager.models.User
@@ -38,7 +39,7 @@ class FirestoreClass {
     }
 
 
-    fun signInUser(activity: Activity){
+    fun loadUserData(activity: Activity){
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserId())
             .get()
@@ -51,6 +52,9 @@ class FirestoreClass {
                     }
                     is MainActivity -> {
                         activity.updateNavigationUserDetails(loggedInUser)
+                    }
+                    is MyProfileActivity -> {
+                        activity.setUserDataInUI(loggedInUser)
                     }
 
                 }
