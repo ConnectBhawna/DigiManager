@@ -3,6 +3,7 @@ package com.example.digimanager.firestore
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
+import android.widget.Toast
 import com.example.digimanager.activities.MainActivity
 import com.example.digimanager.activities.MyProfileActivity
 import com.example.digimanager.activities.SignInActivity
@@ -34,6 +35,28 @@ class FirestoreClass {
                     "Error writing document",
                     e
                 )
+            }
+
+    }
+
+    fun updateUserProfileData(activity: MyProfileActivity,
+                              userHashMap: HashMap<String,Any>){
+        mFireStore.collection(Constants.USERS)
+            .document(getCurrentUserId())
+            .update(userHashMap)
+            .addOnSuccessListener {
+                Log.i(activity.javaClass.simpleName,"Profile Data Updated successfully")
+                Toast.makeText(activity,"Profile updated successfully!",Toast.LENGTH_SHORT).show()
+                activity.profileUpdateSuccess()
+            }.addOnFailureListener{
+                e->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating a board",
+                    e
+                )
+                Toast.makeText(activity,"Error when updating the profile!",Toast.LENGTH_SHORT).show()
             }
 
     }

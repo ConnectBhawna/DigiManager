@@ -51,9 +51,8 @@ class MyProfileActivity : BaseActivity() {
 
             if(ContextCompat.checkSelfPermission(
                     this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED){
+                     == PackageManager.PERMISSION_GRANTED){
                 showImageChooser()
-
             }
             else{
                 ActivityCompat.requestPermissions(
@@ -71,7 +70,7 @@ class MyProfileActivity : BaseActivity() {
             else {
                 showProgressDialog(resources.getString(R.string.please_wait))
                 // Call a function to update user details in the database.
-                //updateUserProfileData()
+                updateUserProfileData()
             }
         }
     }
@@ -83,7 +82,8 @@ class MyProfileActivity : BaseActivity() {
     ){
         super.onRequestPermissionsResult(requestCode, permission, grantResults)
         if(requestCode == READ_STORAGE_PERMISSION_CODE){
-            if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if(grantResults.isNotEmpty()
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 showImageChooser()
             }
             else{
@@ -111,12 +111,12 @@ class MyProfileActivity : BaseActivity() {
         if(resultCode == Activity.RESULT_OK
             && requestCode == 0
             && data!!.data != null){
-            mSelectedImageFileUri = data.data!!
+            mSelectedImageFileUri = data.data
 
             try{
                 Glide
                     .with(this@MyProfileActivity)
-                    .load(Uri.parse(mSelectedImageFileUri.toString()))
+                    .load(mSelectedImageFileUri)
                     .centerCrop()
                     .placeholder(R.drawable.ic_user_place_holder)
                     .into(iv_profile_user_image)
@@ -161,6 +161,24 @@ class MyProfileActivity : BaseActivity() {
             .getExtensionFromMimeType(contentResolver.getType(uri!!))
     }
 
+    private fun updateUserProfileData(){
+        val userHashMap = HashMap<String,Any>()
+
+        if(mProfileImageURL.isNotEmpty() && mProfileImageURL != mUserDetails.image){
+            userHashMap[Constants.IMAGE] = mProfileImageURL
+        }
+        if(et_name.text.toString() != mUserDetails.name){
+            userHashMap[Constants.NAME] = et_name.text.toString()
+        }
+        if(et_name.text.toString() != mUserDetails.name){
+            userHashMap[Constants.NAME] = et_name.text.toString()
+        }
+        if(et_mobile.text.toString() != mUserDetails.mobile.toString()){
+            userHashMap[Constants.MOBILE] = et_mobile.text.toString().toLong()
+        }
+        FirestoreClass().updateUserProfileData(this,userHashMap)
+
+    }
     private fun uploadUserImage() {
 
         showProgressDialog(resources.getString(R.string.please_wait))
@@ -187,8 +205,9 @@ class MyProfileActivity : BaseActivity() {
                             Log.e("Downloadable Image URL", uri.toString())
                             // assign the image url to the variable.
                             mProfileImageURL = uri.toString()
+                            hideProgressDialog()
                             // Call a function to update user details in the database.
-                            //updateUserProfileData()
+                            updateUserProfileData()
                         }
                 }
                 .addOnFailureListener { exception ->
