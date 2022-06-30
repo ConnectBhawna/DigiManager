@@ -20,6 +20,8 @@ import com.example.digimanager.R
 import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.User
 import com.example.digimanager.utils.Constants
+import com.example.digimanager.utils.Constants.READ_STORAGE_PERMISSION_CODE
+import com.example.digimanager.utils.Constants.getFileExtension
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_my_profile.*
@@ -28,11 +30,6 @@ import java.io.IOException
 
 
 class MyProfileActivity : BaseActivity() {
-
-    companion object {
-        private const val READ_STORAGE_PERMISSION_CODE =1
-        private const val PICK_IMAGE_REQUEST_CODE = 2
-    }
 
     // A global variable for user details.
     private lateinit var mUserDetails: User
@@ -52,13 +49,13 @@ class MyProfileActivity : BaseActivity() {
             if(ContextCompat.checkSelfPermission(
                     this, Manifest.permission.READ_EXTERNAL_STORAGE)
                      == PackageManager.PERMISSION_GRANTED){
-                showImageChooser()
+                Constants.showImageChooser(this)
             }
             else{
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                    READ_STORAGE_PERMISSION_CODE
+                    Constants.READ_STORAGE_PERMISSION_CODE
                 )
             }
         }
@@ -84,7 +81,7 @@ class MyProfileActivity : BaseActivity() {
         if(requestCode == READ_STORAGE_PERMISSION_CODE){
             if(grantResults.isNotEmpty()
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                showImageChooser()
+                Constants.showImageChooser(this)
             }
             else{
                 Toast.makeText(
@@ -97,14 +94,6 @@ class MyProfileActivity : BaseActivity() {
 
     }
 
-    private fun showImageChooser(){
-        var galleryIntent = Intent(Intent.ACTION_PICK,
-            MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )
-        // Launches the image selection of phone storage using the constant code.
-        startActivityForResult(galleryIntent, PICK_IMAGE_REQUEST_CODE)
-
-    }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -156,11 +145,6 @@ class MyProfileActivity : BaseActivity() {
         }
     }
 
-    private fun getFileExtension(uri: Uri?): String? {
-        return MimeTypeMap.getSingleton()
-            .getExtensionFromMimeType(contentResolver.getType(uri!!))
-    }
-
     private fun updateUserProfileData(){
         val userHashMap = HashMap<String,Any>()
 
@@ -186,7 +170,7 @@ class MyProfileActivity : BaseActivity() {
         if (mSelectedImageFileUri != null) {
             //getting the storage reference
             val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-                "USER_IMAGE" + System.currentTimeMillis() + "." + getFileExtension(
+                "USER_IMAGE" + System.currentTimeMillis() + "." + getFileExtension(this,
                     mSelectedImageFileUri
                 )
             )

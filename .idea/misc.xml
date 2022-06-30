@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/edit_text_shape.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_action_navigation_menu.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable/ic_vector_add_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_white_color_back_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/nav_header_main_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/shape_button_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_border_shape_button_rounded.xml" value="0.1" />
