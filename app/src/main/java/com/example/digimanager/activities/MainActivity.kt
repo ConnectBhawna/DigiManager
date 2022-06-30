@@ -30,10 +30,13 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
 
         //sETTING ACTION BAR
         setupActionBar()
-
         nav_view.setNavigationItemSelectedListener(this@MainActivity)
-
         FirestoreClass().loadUserData(this)
+
+        //On clicking on floating point button
+        fab_create_board.setOnClickListener{
+            startActivity(Intent(this,CreateBoardActivity::class.java))
+        }
     }
 
     private fun setupActionBar(){
