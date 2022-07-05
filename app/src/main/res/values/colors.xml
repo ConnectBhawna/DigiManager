@@ -15,4 +15,5 @@
 
 
     <color name="snackbar_error_color1">#F72400</color>
+    <color name="divider_color">#EAEAEA</color>
 </resources>
