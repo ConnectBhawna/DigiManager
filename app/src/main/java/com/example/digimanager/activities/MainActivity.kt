@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.digimanager.R
 import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.User
+import com.example.digimanager.utils.Constants
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +25,9 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
     companion object{
         const val MY_PROFILE_REQUEST_CODE : Int = 11
     }
+
+    private lateinit var mUserName: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,7 +39,11 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
 
         //On clicking on floating point button
         fab_create_board.setOnClickListener{
-            startActivity(Intent(this,CreateBoardActivity::class.java))
+            val intent = (Intent(this,
+                CreateBoardActivity::class.java))
+            intent.putExtra(Constants.NAME,mUserName)
+            startActivity(intent)
+
         }
     }
 
@@ -70,6 +78,9 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
     }
 
     fun updateNavigationUserDetails(user : User){
+
+        mUserName = user.name
+
 
         Glide
             .with(this)

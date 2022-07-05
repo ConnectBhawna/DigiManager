@@ -4,10 +4,8 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
-import com.example.digimanager.activities.MainActivity
-import com.example.digimanager.activities.MyProfileActivity
-import com.example.digimanager.activities.SignInActivity
-import com.example.digimanager.activities.SignUpScreen
+import com.example.digimanager.activities.*
+import com.example.digimanager.models.Board
 import com.example.digimanager.models.User
 import com.example.digimanager.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -37,6 +35,25 @@ class FirestoreClass {
                 )
             }
 
+    }
+
+    fun createBoard(activity: CreateBoardActivity,board: Board){
+        mFireStore.collection(Constants.BOARDS)
+            .document()
+            .set(board,SetOptions.merge())
+            .addOnSuccessListener {
+                Log.e(activity.javaClass.simpleName,"Board created successfully. ")
+                Toast.makeText(activity, "Board created successfully", Toast.LENGTH_SHORT).show()
+                activity.boardCreatedSuccessfully()
+            }.addOnFailureListener{
+                exception ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while creating a board,",
+                    exception
+                )
+            }
     }
 
     fun updateUserProfileData(activity: MyProfileActivity,
