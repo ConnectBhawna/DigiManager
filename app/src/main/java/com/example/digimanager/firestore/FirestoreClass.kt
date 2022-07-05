@@ -1,6 +1,5 @@
 package com.example.digimanager.firestore
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.util.Log
 import android.widget.Toast
@@ -56,6 +55,30 @@ class FirestoreClass {
             }
     }
 
+    /**
+     * A function to get the list of created boards from the database.
+     */
+    fun getBoardsList(activity: MainActivity) {
+        mFireStore.collection(Constants.BOARDS)
+            .whereArrayContains(Constants.ASSIGNED_TO, getCurrentUserId())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.documents.toString())
+                val boardsList: ArrayList<Board> = ArrayList()
+                for (i in document.documents) {
+                    val board = i.toObject(Board::class.java)!!
+                    board.documentId = i.id
+                    boardsList.add(board)
+                }
+                activity.populateBoardsListToUI(boardsList)
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error while creating a board.", e)
+            }
+    }
+
+
     fun updateUserProfileData(activity: MyProfileActivity,
                               userHashMap: HashMap<String,Any>){
         mFireStore.collection(Constants.USERS)
@@ -79,7 +102,7 @@ class FirestoreClass {
     }
 
 
-    fun loadUserData(activity: Activity){
+    fun loadUserData(activity: Activity, readBoardsList: Boolean = false){
         mFireStore.collection(Constants.USERS)
             .document(getCurrentUserId())
             .get()
@@ -91,7 +114,7 @@ class FirestoreClass {
                         activity.signInSuccess(loggedInUser)
                     }
                     is MainActivity -> {
-                        activity.updateNavigationUserDetails(loggedInUser)
+                        activity.updateNavigationUserDetails(loggedInUser,readBoardsList)
                     }
                     is MyProfileActivity -> {
                         activity.setUserDataInUI(loggedInUser)

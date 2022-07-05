@@ -7,17 +7,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.digimanager.R
+import com.example.digimanager.adapters.BoardItemsAdapter
 import com.example.digimanager.firestore.FirestoreClass
+import com.example.digimanager.models.Board
 import com.example.digimanager.models.User
 import com.example.digimanager.utils.Constants
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.content_main.*
 import kotlinx.android.synthetic.main.nav_header_main.*
 
 class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListener {
@@ -35,7 +41,7 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         //sETTING ACTION BAR
         setupActionBar()
         nav_view.setNavigationItemSelectedListener(this@MainActivity)
-        FirestoreClass().loadUserData(this)
+        FirestoreClass().loadUserData(this,true)
 
         //On clicking on floating point button
         fab_create_board.setOnClickListener{
@@ -44,6 +50,25 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
             intent.putExtra(Constants.NAME,mUserName)
             startActivity(intent)
 
+        }
+    }
+
+    fun populateBoardsListToUI(boardsList: ArrayList<Board>){
+        hideProgressDialog()
+
+        if(boardsList.size > 0){
+            rv_boards_list.visibility = View.VISIBLE
+            tv_no_boards_available.visibility = View.GONE
+
+            rv_boards_list.layoutManager = LinearLayoutManager(this)
+            rv_boards_list.setHasFixedSize(true)
+
+            val adapter = BoardItemsAdapter(this,boardsList)
+            rv_boards_list.adapter = adapter
+
+        }else{
+            rv_boards_list.visibility = View.GONE
+            tv_no_boards_available.visibility = View.VISIBLE
         }
     }
 
@@ -77,10 +102,9 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
         }
     }
 
-    fun updateNavigationUserDetails(user : User){
+    fun updateNavigationUserDetails(user: User, readBoardsList: Boolean){
 
         mUserName = user.name
-
 
         Glide
             .with(this)
@@ -90,6 +114,11 @@ class MainActivity : BaseActivity(),NavigationView.OnNavigationItemSelectedListe
             .into(iv_user_image);
 
         tv_username.text = user.name
+
+        if(readBoardsList){
+            showProgressDialog(resources.getString(R.string.please_wait))
+            FirestoreClass().getBoardsList(this)
+        }
 
     }
 
