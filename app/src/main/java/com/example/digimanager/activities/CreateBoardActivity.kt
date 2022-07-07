@@ -159,7 +159,8 @@ class CreateBoardActivity : BaseActivity() {
     }
 
     fun boardCreatedSuccessfully(){
-         hideProgressDialog()
+        hideProgressDialog()
+        setResult(Activity.RESULT_OK)
         finish()
     }
 
