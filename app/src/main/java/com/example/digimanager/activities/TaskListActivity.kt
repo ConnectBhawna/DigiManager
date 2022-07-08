@@ -2,9 +2,12 @@ package com.example.digimanager.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.digimanager.R
+import com.example.digimanager.adapters.TaskListItemsAdapter
 import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.Board
+import com.example.digimanager.models.Task
 import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_task_list.*
 
@@ -21,7 +24,6 @@ class TaskListActivity : BaseActivity() {
         FirestoreClass().getBoardDetails(this@TaskListActivity, boardDocumentId)
 
     }
-
     /**
      * A function to setup action bar
      */
@@ -39,8 +41,23 @@ class TaskListActivity : BaseActivity() {
         toolbar_task_list_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
-    fun boardDetails(board: Board){
+    /**
+     * A function to get the result of Board Detail.
+     */
+    fun boardDetails(board: Board) {
+
         hideProgressDialog()
         setupActionBar(board.name)
+
+        val addTaskList = Task(resources.getString(R.string.add_list))
+        board.taskList.add(addTaskList)
+
+        rv_task_list.layoutManager =
+            LinearLayoutManager(this@TaskListActivity, LinearLayoutManager.HORIZONTAL, false)
+        rv_task_list.setHasFixedSize(true)
+
+        val adapter = TaskListItemsAdapter(this@TaskListActivity, board.taskList)
+        rv_task_list.adapter = adapter
     }
+
 }
