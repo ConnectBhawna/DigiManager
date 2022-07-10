@@ -43,9 +43,11 @@ class FirestoreClass {
             .get()
             .addOnSuccessListener { document ->
                 Log.e(activity.javaClass.simpleName, document.toString())
-
-                // Send the result of board to the base activity.
-                activity.boardDetails(document.toObject(Board::class.java)!!)
+                val board = document.toObject(Board::class.java)
+                board?.documentId = document.id
+                if (board != null) {
+                    activity.boardDetails(board)
+                }
             }
             .addOnFailureListener { e ->
                 activity.hideProgressDialog()

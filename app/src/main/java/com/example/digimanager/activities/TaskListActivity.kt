@@ -12,6 +12,8 @@ import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_task_list.*
 
 class TaskListActivity : BaseActivity() {
+
+    private lateinit var mBoardDetails : Board
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
