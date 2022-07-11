@@ -29,15 +29,13 @@ class TaskListActivity : BaseActivity() {
     /**
      * A function to setup action bar
      */
-    private fun setupActionBar(title: String) {
-
+    private fun setupActionBar() {
         setSupportActionBar(toolbar_task_list_activity)
-
         val actionBar = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
-            actionBar.title = title
+            actionBar.title = mBoardDetails.name
         }
 
         toolbar_task_list_activity.setNavigationOnClickListener { onBackPressed() }
@@ -47,9 +45,9 @@ class TaskListActivity : BaseActivity() {
      * A function to get the result of Board Detail.
      */
     fun boardDetails(board: Board) {
-
+        mBoardDetails = board
         hideProgressDialog()
-        setupActionBar(board.name)
+        setupActionBar()
 
         val addTaskList = Task(resources.getString(R.string.add_list))
         board.taskList.add(addTaskList)
@@ -60,6 +58,22 @@ class TaskListActivity : BaseActivity() {
 
         val adapter = TaskListItemsAdapter(this@TaskListActivity, board.taskList)
         rv_task_list.adapter = adapter
+    }
+
+    fun addUpdateTaskListSuccess(){
+        hideProgressDialog()
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FirestoreClass().getBoardDetails(this,mBoardDetails.documentId)
+    }
+
+    fun createTaskList(taskListName: String){
+        val task = Task(taskListName, FirestoreClass().getCurrentUserId())
+        mBoardDetails.taskList.add(0,task)
+        mBoardDetails.taskList.removeAt(mBoardDetails.taskList.size-1)
+
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FirestoreClass().addUpdateTaskList(this,mBoardDetails)
+
     }
 
 }
