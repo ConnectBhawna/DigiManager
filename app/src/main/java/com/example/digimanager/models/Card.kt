@@ -3,31 +3,30 @@ package com.example.digimanager.models
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Task(
-    var title: String = "",
+data class Card(
+    val name: String = "",
     val createdBy: String = "",
-    val cards: ArrayList<Card> = ArrayList()
+    val assignedTo: ArrayList<String> = ArrayList()
 ) : Parcelable {
     constructor(source: Parcel) : this(
         source.readString()!!,
         source.readString()!!,
-        source.createTypedArrayList(Card.CREATOR)!!
+        source.createStringArrayList()!!
     )
 
     override fun describeContents() = 0
 
     override fun writeToParcel(dest: Parcel, flags: Int) = with(dest) {
-        writeString(title)
+        writeString(name)
         writeString(createdBy)
-        writeTypedList(cards)
+        writeStringList(assignedTo)
     }
-
 
     companion object {
         @JvmField
-        val CREATOR: Parcelable.Creator<Task> = object : Parcelable.Creator<Task> {
-            override fun createFromParcel(source: Parcel): Task = Task(source)
-            override fun newArray(size: Int): Array<Task?> = arrayOfNulls(size)
+        val CREATOR: Parcelable.Creator<Card> = object : Parcelable.Creator<Card> {
+            override fun createFromParcel(source: Parcel): Card = Card(source)
+            override fun newArray(size: Int): Array<Card?> = arrayOfNulls(size)
         }
     }
 }

@@ -7,6 +7,7 @@ import com.example.digimanager.R
 import com.example.digimanager.adapters.TaskListItemsAdapter
 import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.Board
+import com.example.digimanager.models.Card
 import com.example.digimanager.models.Task
 import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_task_list.*
@@ -98,6 +99,28 @@ class TaskListActivity : BaseActivity() {
         mBoardDetails.taskList.removeAt(position)
         mBoardDetails.taskList.removeAt(mBoardDetails.taskList.size - 1)
         // Show the progress dialog.
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FirestoreClass().addUpdateTaskList(this@TaskListActivity, mBoardDetails)
+    }
+
+    fun addCardToTaskList(position: Int, cardName: String) {
+        mBoardDetails.taskList.removeAt(mBoardDetails.taskList.size - 1)
+
+        val cardAssignedUsersList: ArrayList<String> = ArrayList()
+        cardAssignedUsersList.add(FirestoreClass().getCurrentUserId())
+
+        val card = Card(cardName, FirestoreClass().getCurrentUserId(), cardAssignedUsersList)
+
+        val cardsList = mBoardDetails.taskList[position].cards
+        cardsList.add(card)
+
+        val task = Task(
+            mBoardDetails.taskList[position].title,
+            mBoardDetails.taskList[position].createdBy,
+            cardsList
+        )
+
+        mBoardDetails.taskList[position] = task
         showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().addUpdateTaskList(this@TaskListActivity, mBoardDetails)
     }
