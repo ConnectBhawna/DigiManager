@@ -56,9 +56,9 @@ class TaskListActivity : BaseActivity() {
         // Handle presses on the action bar menu items
         when (item.itemId) {
             R.id.action_members -> {
-
-                startActivity(Intent(this@TaskListActivity, MembersActivity::class.java))
-                return true
+                val intent = Intent(this@TaskListActivity, MembersActivity::class.java)
+                intent.putExtra(Constants.BOARD_DETAIL, mBoardDetails)
+                startActivity(intent)
             }
         }
         return super.onOptionsItemSelected(item)

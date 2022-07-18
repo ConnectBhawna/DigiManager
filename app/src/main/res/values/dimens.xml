@@ -101,4 +101,16 @@
     <dimen name="members_content_padding">16dp</dimen>
     <dimen name="members_cv_marginTop">5dp</dimen>
 
+
+    <dimen name="item_member_marginBottom">10dp</dimen>
+    <dimen name="item_member_content_padding">10dp</dimen>
+    <dimen name="item_member_member_image_size">60dp</dimen>
+    <dimen name="item_member_image_circular_width_size">0.5dp</dimen>
+    <dimen name="item_member_detail_layout_marginStart">10dp</dimen>
+    <dimen name="item_member_name_text_size">18sp</dimen>
+    <dimen name="item_member_email_text_size">14sp</dimen>
+    <dimen name="item_member_divider_height">0.3dp</dimen>
+    <dimen name="item_member_divider_marginTop">5dp</dimen>
+
+
 </resources>
