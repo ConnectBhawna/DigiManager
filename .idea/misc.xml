@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/activity_intro.xml" value="0.14" />
         <entry key="app/src/main/res/layout/activity_introduct.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_members.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_my_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.18023255813953487" />
         <entry key="app/src/main/res/layout/activity_sign_up_screen.xml" value="0.25" />
@@ -31,6 +32,7 @@
         <entry key="app/src/main/res/layout/item_task.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.25" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.18" />
+        <entry key="app/src/main/res/menu/menu_members.xml" value="0.1" />
       </map>
     </option>
   </component>
