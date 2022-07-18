@@ -90,4 +90,12 @@
 
     <dimen name="task_list_content_padding">10dp</dimen>
 
+    <dimen name="item_card_content_margin">8dp</dimen>
+    <dimen name="item_card_cv_elevation">5dp</dimen>
+    <dimen name="item_card_label_height">15dp</dimen>
+    <dimen name="item_card_name_text_padding">10dp</dimen>
+    <dimen name="item_card_name_text_size">16sp</dimen>
+    <dimen name="item_card_members_text_padding">10dp</dimen>
+    <dimen name="item_card_members_text_size">14sp</dimen>
+
 </resources>

@@ -13,10 +13,10 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:cardBackgroundColor="#8FBBDD"
+        app:cardBackgroundColor="#A3CEEF"
         app:cardElevation="5dp"
-        app:cardCornerRadius="15dp"
-        android:paddingStart="15sp"
+        app:cardCornerRadius="5dp"
+        android:paddingStart="0sp"
         android:padding="@dimen/item_board_content_padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -39,15 +39,16 @@
                 android:id="@+id/tv_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#030C3E"
+                android:textColor="#010311"
                 android:textSize="@dimen/item_board_name_text_size"
+                android:paddingTop="5sp"
                 tools:text="Board Name"
                 />
             <TextView
                 android:id="@+id/tv_created_by"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#EE8080"
+                android:textColor="#04146D"
                 android:textSize="@dimen/item_board_created_by_text_size"
                 tools:text="Created By"
                 />

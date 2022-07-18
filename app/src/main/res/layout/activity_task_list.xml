@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_background"
-        android:padding="@dimen/task_list_content_padding"
+        android:padding="5sp"
         >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_task_list"

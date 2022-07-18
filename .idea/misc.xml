@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/card_background.xml" value="0.144" />
         <entry key="app/src/main/res/drawable/edit_text_shape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_action_navigation_menu.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_vector_add_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_white_color_back_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/item_card.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/nav_header_main_background.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/shape_button_rounded.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/white_border_shape_button_rounded.xml" value="0.1" />
@@ -20,11 +22,12 @@
         <entry key="app/src/main/res/layout/activity_sign_in.xml" value="0.18023255813953487" />
         <entry key="app/src/main/res/layout/activity_sign_up_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.16" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.18" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/item_board.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_board.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_card.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_task.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.25" />
         <entry key="app/src/main/res/menu/activity_main_drawer.xml" value="0.18" />
