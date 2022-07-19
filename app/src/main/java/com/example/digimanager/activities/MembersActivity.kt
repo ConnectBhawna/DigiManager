@@ -21,6 +21,9 @@ class MembersActivity : BaseActivity() {
     // A global variable for Board Details.
     private lateinit var mBoardDetails: Board
 
+    // A global variable for Assigned Members List.
+    private lateinit var mAssignedMembersList:ArrayList<User>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_members)
@@ -74,6 +77,7 @@ class MembersActivity : BaseActivity() {
      * A function to setup assigned members list into recyclerview.
      */
     fun setupMembersList(list: ArrayList<User>) {
+        mAssignedMembersList = list
         hideProgressDialog()
         rv_members_list.layoutManager = LinearLayoutManager(this@MembersActivity)
         rv_members_list.setHasFixedSize(true)
@@ -90,11 +94,12 @@ class MembersActivity : BaseActivity() {
     The resource will be inflated, adding all top-level views to the screen.*/
         dialog.setContentView(R.layout.dialog_search_member)
         dialog.tv_add.setOnClickListener(View.OnClickListener {
-
             val email = dialog.et_email_search_member.text.toString()
 
             if (email.isNotEmpty()) {
                 dialog.dismiss()
+                showProgressDialog(resources.getString(R.string.please_wait))
+                FirestoreClass().getMemberDetails(this@MembersActivity, email)
             } else {
                 Toast.makeText(
                     this@MembersActivity,
@@ -107,6 +112,21 @@ class MembersActivity : BaseActivity() {
             dialog.dismiss()
         })
         dialog.show()
+    }
+
+    fun memberDetails(user: User) {
+
+        mBoardDetails.assignedTo.add(user.id)
+        FirestoreClass().assignMemberToBoard(this@MembersActivity, mBoardDetails, user)
+
+    }
+    /**
+     * A function to get the result of assigning the members.
+     */
+    fun memberAssignSuccess(user: User) {
+        hideProgressDialog()
+        mAssignedMembersList.add(user)
+        setupMembersList(mAssignedMembersList)
     }
 }
 

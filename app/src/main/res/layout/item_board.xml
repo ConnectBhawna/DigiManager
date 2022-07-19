@@ -20,7 +20,7 @@
         android:padding="@dimen/item_board_content_padding">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/iv_board_image"
+            android:id="@+id/iv_profile_user_image"
             android:layout_width="@dimen/item_board_image_size"
             android:layout_height="@dimen/item_board_image_size"
             android:contentDescription="@string/image_contentDescription"

@@ -37,7 +37,7 @@ open class BoardItemsAdapter(
                 .load(model.image)
                 .centerCrop()
                 .placeholder(R.drawable.ic_board_place_holder)
-                .into(holder.itemView.iv_board_image)
+                .into(holder.itemView.iv_profile_user_image)
 
             holder.itemView.tv_name.text = model.name
             holder.itemView.tv_created_by.text = "Created By : ${model.createdBy}"

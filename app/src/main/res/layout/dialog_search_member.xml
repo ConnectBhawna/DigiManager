@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/shape_dialog_rounded"
-        app:cardBackgroundColor="#010727"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/dialog_member_cv_cornerRadius"
         app:cardElevation="@dimen/dialog_member_cv_elevation"
         >
@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/dialog_member_title_padding"
                 android:text="@string/search_member"
-                android:textColor="@color/white"
+                android:textColor="@color/colorAccent"
                 android:textSize="@dimen/dialog_member_title_text_size"
                 android:textStyle="bold"
                 />
@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/email"
                     android:textColorHint="@color/white"
-                    android:textColor="@color/white"
+                    android:textColor="@color/colorPrimary"
                     android:inputType="textEmailAddress"
                     android:textSize="@dimen/et_text_size"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
