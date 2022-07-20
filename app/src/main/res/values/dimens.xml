@@ -127,5 +127,15 @@
     <dimen name="member_dialog_action_button_text_size">16sp</dimen>
 
 
+    <dimen name="card_details_content_padding">16dp</dimen>
+    <dimen name="card_details_cv_card_name_marginBottom">10dp</dimen>
+    <dimen name="card_details_cv_content_padding">16dp</dimen>
+    <dimen name="card_details_label_text_size">14sp</dimen>
+    <dimen name="card_details_value_marginTop">5dp</dimen>
+    <dimen name="card_details_value_padding">10dp</dimen>
+    <dimen name="card_details_members_label_marginTop">15dp</dimen>
+    <dimen name="card_details_update_btn_marginTop">30dp</dimen>
+
+
 
 </resources>

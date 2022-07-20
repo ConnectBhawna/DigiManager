@@ -64,6 +64,8 @@ class TaskListActivity : BaseActivity() {
         }
     }
 
+
+
     // Inflate the action menu for TaskListScreen and also launch the MembersActivity Screen on item selection.)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu to use in the action bar
@@ -168,12 +170,18 @@ class TaskListActivity : BaseActivity() {
     }
 
     /**
+     * A function for viewing and updating card details.
+     */
+    fun cardDetails(taskListPosition: Int, cardPosition: Int) {
+        startActivity(Intent(this@TaskListActivity, CardDetailsActivity::class.java))
+    }
+
+    /**
      * A companion object to declare the constants.
      */
     companion object {
         //A unique code for starting the activity for result
         const val MEMBERS_REQUEST_CODE: Int = 13
     }
-    // END
 
 }
