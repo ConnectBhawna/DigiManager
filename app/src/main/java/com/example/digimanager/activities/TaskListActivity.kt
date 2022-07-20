@@ -1,8 +1,10 @@
 package com.example.digimanager.activities
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,7 +19,9 @@ import kotlinx.android.synthetic.main.activity_task_list.*
 
 class TaskListActivity : BaseActivity() {
 
-    private lateinit var mBoardDetails : Board
+    private lateinit var mBoardDetails: Board
+    private lateinit var mBoardDocumentId: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
@@ -30,6 +34,8 @@ class TaskListActivity : BaseActivity() {
         FirestoreClass().getBoardDetails(this@TaskListActivity, boardDocumentId)
 
     }
+
+
     /**
      * A function to setup action bar
      */
@@ -45,6 +51,19 @@ class TaskListActivity : BaseActivity() {
         toolbar_task_list_activity.setNavigationOnClickListener { onBackPressed() }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK
+            && requestCode == MEMBERS_REQUEST_CODE
+        ) {
+            // Show the progress dialog.
+            showProgressDialog(resources.getString(R.string.please_wait))
+            FirestoreClass().getBoardDetails(this@TaskListActivity, mBoardDocumentId)
+        } else {
+            Log.e("Cancelled", "Cancelled")
+        }
+    }
+
     // Inflate the action menu for TaskListScreen and also launch the MembersActivity Screen on item selection.)
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         // Inflate the menu to use in the action bar
@@ -58,7 +77,8 @@ class TaskListActivity : BaseActivity() {
             R.id.action_members -> {
                 val intent = Intent(this@TaskListActivity, MembersActivity::class.java)
                 intent.putExtra(Constants.BOARD_DETAIL, mBoardDetails)
-                startActivity(intent)
+                startActivityForResult(intent, MEMBERS_REQUEST_CODE)
+                return true
             }
         }
         return super.onOptionsItemSelected(item)
@@ -146,5 +166,14 @@ class TaskListActivity : BaseActivity() {
         showProgressDialog(resources.getString(R.string.please_wait))
         FirestoreClass().addUpdateTaskList(this@TaskListActivity, mBoardDetails)
     }
+
+    /**
+     * A companion object to declare the constants.
+     */
+    companion object {
+        //A unique code for starting the activity for result
+        const val MEMBERS_REQUEST_CODE: Int = 13
+    }
+    // END
 
 }

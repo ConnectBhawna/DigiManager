@@ -1,5 +1,6 @@
 package com.example.digimanager.activities
 
+import android.app.Activity
 import android.app.Dialog
 import android.os.Bundle
 import android.view.Menu
@@ -23,6 +24,9 @@ class MembersActivity : BaseActivity() {
 
     // A global variable for Assigned Members List.
     private lateinit var mAssignedMembersList:ArrayList<User>
+
+    // A global variable for notifying any changes done or not in the assigned members list.
+    private var anyChangesDone: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -120,12 +124,21 @@ class MembersActivity : BaseActivity() {
         FirestoreClass().assignMemberToBoard(this@MembersActivity, mBoardDetails, user)
 
     }
-    /**
+
+    override fun onBackPressed() {
+        if (anyChangesDone) {
+            setResult(Activity.RESULT_OK)
+        }
+        super.onBackPressed()
+
+    }
+        /**
      * A function to get the result of assigning the members.
      */
     fun memberAssignSuccess(user: User) {
         hideProgressDialog()
         mAssignedMembersList.add(user)
+        anyChangesDone = true
         setupMembersList(mAssignedMembersList)
     }
 }
