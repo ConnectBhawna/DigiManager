@@ -20,8 +20,8 @@ open class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_base)
     }
     /**
-     * This function is used to show the progress
-     * dialog with the title and message to user.
+      This function is used to show the progress
+      dialog with the title and message to user.
      */
     fun showProgressDialog(text: String) {
         mProgressDialog = Dialog(this)
@@ -30,8 +30,8 @@ open class BaseActivity : AppCompatActivity() {
         mProgressDialog.show()
     }
     /**
-     * This function is used to dismiss the progress
-     * dialog if it is visible to user.
+      This function is used to dismiss the progress
+      dialog if it is visible to user.
      */
     fun hideProgressDialog() {
         mProgressDialog.dismiss()
