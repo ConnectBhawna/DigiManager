@@ -39,6 +39,13 @@ class CardDetailsActivity : BaseActivity() {
         et_name_card_details.setText(mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].name)
         et_name_card_details.setSelection(et_name_card_details.text.toString().length) // The cursor after the string length
 
+
+        // Get the already selected label color and set it to the TextView background.
+        mSelectedColor = mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].labelColor
+        if (mSelectedColor.isNotEmpty()) {
+            setColor()
+        }
+
         //  Add a click event for update button and also call the function to update the card details.
         btn_update_card_details.setOnClickListener {
             if(et_name_card_details.text.toString().isNotEmpty()) {
@@ -212,10 +219,12 @@ class CardDetailsActivity : BaseActivity() {
      */
     private fun labelColorsListDialog() {
         val colorsList: ArrayList<String> = colorsList()
+        // Pass the selected color to show it as already selected with tick icon in the list
         val listDialog = object : LabelColorListDialog(
             this@CardDetailsActivity,
             colorsList,
-            resources.getString(R.string.str_select_label_color)
+            resources.getString(R.string.str_select_label_color),
+            mSelectedColor
         ) {
             override fun onItemSelected(color: String) {
                 mSelectedColor = color
