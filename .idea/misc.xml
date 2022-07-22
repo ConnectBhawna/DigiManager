@@ -27,10 +27,12 @@
         <entry key="app/src/main/res/layout/activity_task_list.xml" value="0.15" />
         <entry key="app/src/main/res/layout/app_bar_main.xml" value="0.16" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/dialog_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_progress.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dialog_search_member.xml" value="0.13125" />
         <entry key="app/src/main/res/layout/item_board.xml" value="0.3074712643678161" />
         <entry key="app/src/main/res/layout/item_card.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_label_color.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_member.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_task.xml" value="0.33" />
         <entry key="app/src/main/res/layout/nav_header_main.xml" value="0.25" />
