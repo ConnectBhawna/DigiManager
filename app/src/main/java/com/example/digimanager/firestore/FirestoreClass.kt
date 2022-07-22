@@ -96,23 +96,32 @@ class FirestoreClass {
                 Log.e(activity.javaClass.simpleName, "Error while creating a board.", e)
             }
     }
+    /**
+     * A function to create a task list in the board detail.
+     */
+    fun addUpdateTaskList(activity: Activity, board: Board) {
 
-    fun addUpdateTaskList(activity: TaskListActivity,board: Board){
-        val taskListHashMap = HashMap<String,Any>()
+        val taskListHashMap = HashMap<String, Any>()
         taskListHashMap[Constants.TASK_LIST] = board.taskList
-
         mFireStore.collection(Constants.BOARDS)
             .document(board.documentId)
             .update(taskListHashMap)
             .addOnSuccessListener {
-                Log.e(activity.javaClass.simpleName,"TaskList updated successful!!")
-                activity.addUpdateTaskListSuccess()
-            }.addOnFailureListener{
-                exception ->
-                activity.hideProgressDialog()
-                Log.e(activity.javaClass.simpleName,"Error while creating a board",exception)
+                Log.e(activity.javaClass.simpleName, "TaskList updated successfully.")
 
-
+                if (activity is TaskListActivity) {
+                    activity.addUpdateTaskListSuccess()
+                } else if (activity is CardDetailsActivity) {
+                    activity.addUpdateTaskListSuccess()
+                }
+            }
+            .addOnFailureListener { e ->
+                if (activity is TaskListActivity) {
+                    activity.hideProgressDialog()
+                } else if (activity is TaskListActivity) {
+                    activity.hideProgressDialog()
+                }
+                Log.e(activity.javaClass.simpleName, "Error while creating a board.", e)
             }
     }
 
