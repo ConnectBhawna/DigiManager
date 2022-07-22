@@ -173,7 +173,11 @@ class TaskListActivity : BaseActivity() {
      * A function for viewing and updating card details.
      */
     fun cardDetails(taskListPosition: Int, cardPosition: Int) {
-        startActivity(Intent(this@TaskListActivity, CardDetailsActivity::class.java))
+        val intent = Intent(this@TaskListActivity, CardDetailsActivity::class.java)
+        intent.putExtra(Constants.BOARD_DETAIL, mBoardDetails)
+        intent.putExtra(Constants.TASK_LIST_ITEM_POSITION, taskListPosition)
+        intent.putExtra(Constants.CARD_LIST_ITEM_POSITION, cardPosition)
+        startActivity(intent)
     }
 
     /**
