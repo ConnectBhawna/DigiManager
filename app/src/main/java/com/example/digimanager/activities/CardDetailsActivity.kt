@@ -14,6 +14,7 @@ import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.Board
 import com.example.digimanager.models.Card
 import com.example.digimanager.models.Task
+import com.example.digimanager.models.User
 import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_card_details.*
 
@@ -27,6 +28,8 @@ class CardDetailsActivity : BaseActivity() {
     private var mCardPosition: Int = -1
     // A global variable for selected label color
     private var mSelectedColor: String = ""
+    // A global variable for Assigned Members List.
+    private lateinit var mMembersDetailList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -134,6 +137,11 @@ class CardDetailsActivity : BaseActivity() {
         }
         if (intent.hasExtra(Constants.CARD_LIST_ITEM_POSITION)) {
             mCardPosition = intent.getIntExtra(Constants.CARD_LIST_ITEM_POSITION, -1)
+        }
+
+        //Get the members detail list here through intent
+        if (intent.hasExtra(Constants.BOARD_MEMBERS_LIST)) {
+            mMembersDetailList = intent.getParcelableArrayListExtra(Constants.BOARD_MEMBERS_LIST)!!
         }
     }
 

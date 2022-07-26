@@ -14,6 +14,7 @@ import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.Board
 import com.example.digimanager.models.Card
 import com.example.digimanager.models.Task
+import com.example.digimanager.models.User
 import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_task_list.*
 
@@ -21,6 +22,8 @@ class TaskListActivity : BaseActivity() {
 
     private lateinit var mBoardDetails: Board
     private lateinit var mBoardDocumentId: String
+    // A global variable for Assigned Members List.
+    private lateinit var mAssignedMembersDetailList: ArrayList<User>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -90,20 +93,30 @@ class TaskListActivity : BaseActivity() {
     /**
      * A function to get the result of Board Detail.
      */
+    /**
+     * A function to get the result of Board Detail.
+     */
     fun boardDetails(board: Board) {
         mBoardDetails = board
         hideProgressDialog()
+        // Call the function to setup action bar.
         setupActionBar()
-
+        // Here we are appending an item view for adding a list task list for the board.
         val addTaskList = Task(resources.getString(R.string.add_list))
-        board.taskList.add(addTaskList)
-
+        mBoardDetails.taskList.add(addTaskList)
         rv_task_list.layoutManager =
             LinearLayoutManager(this@TaskListActivity, LinearLayoutManager.HORIZONTAL, false)
         rv_task_list.setHasFixedSize(true)
 
-        val adapter = TaskListItemsAdapter(this@TaskListActivity, board.taskList)
-        rv_task_list.adapter = adapter
+        // Create an instance of TaskListItemsAdapter and pass the task list to it.
+        val adapter = TaskListItemsAdapter(this@TaskListActivity, mBoardDetails.taskList)
+        rv_task_list.adapter = adapter // Attach the adapter to the recyclerView.
+        // Show the progress dialog.
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FirestoreClass().getAssignedMembersListDetails(
+            this@TaskListActivity,
+            mBoardDetails.assignedTo
+        )
     }
 
     fun addUpdateTaskListSuccess(){
@@ -178,7 +191,18 @@ class TaskListActivity : BaseActivity() {
         intent.putExtra(Constants.BOARD_DETAIL, mBoardDetails)
         intent.putExtra(Constants.TASK_LIST_ITEM_POSITION, taskListPosition)
         intent.putExtra(Constants.CARD_LIST_ITEM_POSITION, cardPosition)
+        // Pass the Assigned members board details list to the card detail screen.
+        intent.putExtra(Constants.BOARD_MEMBERS_LIST, mAssignedMembersDetailList)
         startActivityForResult(intent, CARD_DETAILS_REQUEST_CODE)
+    }
+
+
+    /**
+     * A function to get assigned members detail list.
+     */
+    fun boardMembersDetailList(list: ArrayList<User>) {
+        mAssignedMembersDetailList = list
+        hideProgressDialog()
     }
 
     /**
