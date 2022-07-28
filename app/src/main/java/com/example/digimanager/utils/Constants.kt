@@ -34,6 +34,9 @@ object Constants {
 
     const val BOARD_MEMBERS_LIST: String = "board_members_list"
 
+    const val SELECT: String = "Select"
+    const val UN_SELECT: String = "UnSelect"
+
 
     fun showImageChooser(activity: Activity) {
         // An intent for launching the image selection of phone storage.

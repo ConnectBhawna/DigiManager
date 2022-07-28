@@ -10,6 +10,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import com.example.digimanager.R
 import com.example.digimanager.dialogs.LabelColorListDialog
+import com.example.digimanager.dialogs.MembersListDialog
 import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.Board
 import com.example.digimanager.models.Card
@@ -62,6 +63,10 @@ class CardDetailsActivity : BaseActivity() {
             labelColorsListDialog()
         }
 
+        // Add the click event to launch the members list dialog.
+        tv_select_members.setOnClickListener {
+            membersListDialog()
+        }
     }
 
     // Inflate the menu file here.
@@ -242,4 +247,39 @@ class CardDetailsActivity : BaseActivity() {
         listDialog.show()
     }
 
+
+    /**
+     * A function to launch and setup assigned members detail list into recyclerview.
+     */
+    private fun membersListDialog() {
+        // Here we get the updated assigned members list
+        val cardAssignedMembersList =
+            mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].assignedTo
+
+        if (cardAssignedMembersList.size > 0) {
+            // Here we got the details of assigned members list from the global members list which is passed from the Task List screen.
+            for (i in mMembersDetailList.indices) {
+                for (j in cardAssignedMembersList) {
+                    if (mMembersDetailList[i].id == j) {
+                        mMembersDetailList[i].selected = true
+                    }
+                }
+            }
+        } else {
+            for (i in mMembersDetailList.indices) {
+                mMembersDetailList[i].selected = false
+            }
+        }
+
+        val listDialog = object : MembersListDialog(
+            this@CardDetailsActivity,
+            mMembersDetailList,
+            resources.getString(R.string.str_select_member)
+        ) {
+            override fun onItemSelected(user: User, action: String) {
+                //TODO implement the selected Members functionality
+            }
+        }
+        listDialog.show()
+    }
 }

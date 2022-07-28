@@ -147,4 +147,6 @@
     <dimen name="dialog_list_divider_height">1dp</dimen>
     <dimen name="dialog_list_marginTopBottom">3dp</dimen>
 
+    <dimen name="item_selected_member_image_size">45dp</dimen>
+
 </resources>

@@ -46,6 +46,19 @@
                 tools:text="Email"
                 />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_selected_member"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/item_label_color_selected_image_marginEnd"
+            android:contentDescription="@string/image_contentDescription"
+            android:src="@drawable/ic_vector_color_accent_done_24dp"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"
