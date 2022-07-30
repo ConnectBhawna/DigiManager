@@ -41,6 +41,17 @@
             android:textSize="@dimen/item_card_members_text_size"
             android:visibility="gone" tools:text="Members Name"
             />
+
+        <!-- Add recycler view for selected members -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_card_selected_members_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_details_value_marginTop"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

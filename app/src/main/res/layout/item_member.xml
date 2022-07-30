@@ -16,6 +16,7 @@
         >
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/iv_member_image"
+            android:layout_weight="1"
             android:layout_width="@dimen/item_member_member_image_size"
             android:layout_height="@dimen/item_member_member_image_size"
             android:contentDescription="@string/image_contentDescription"
