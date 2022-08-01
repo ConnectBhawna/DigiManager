@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.digimanager.R
@@ -16,12 +18,18 @@ import com.example.digimanager.activities.TaskListActivity
 import com.example.digimanager.models.Card
 import com.example.digimanager.models.Task
 import kotlinx.android.synthetic.main.item_task.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 open class TaskListItemsAdapter(
     private val context: Context,
     private var list: ArrayList<Task>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    // A global variable for position dragged FROM.
+    private var mPositionDraggedFrom = -1
+    // A global variable for position dragged TO.
+    private var mPositionDraggedTo = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         val view = LayoutInflater.from(context).inflate(R.layout.item_task, parent, false)
@@ -139,6 +147,75 @@ open class TaskListItemsAdapter(
                     }
                 }
             })
+
+            //  Add a feature to drap and drop the card items.
+            /**
+             * Creates a divider {@link RecyclerView.ItemDecoration} that can be used with a
+             * {@link LinearLayoutManager}.
+             *
+             * @param context Current context, it will be used to access resources.
+             * @param orientation Divider orientation. Should be {@link #HORIZONTAL} or {@link #VERTICAL}.
+             */
+            val dividerItemDecoration =
+                DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            holder.itemView.rv_card_list.addItemDecoration(dividerItemDecoration)
+
+            //  Creates an ItemTouchHelper that will work with the given Callback.
+            val helper = ItemTouchHelper(object :
+                ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
+
+                /*Called when ItemTouchHelper wants to move the dragged item from its old position to
+                 the new position.*/
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    dragged: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    val draggedPosition = dragged.adapterPosition
+                    val targetPosition = target.adapterPosition
+
+                    // Assign the global variable with updated values
+                    if (mPositionDraggedFrom == -1) {
+                        mPositionDraggedFrom = draggedPosition
+                    }
+                    mPositionDraggedTo = targetPosition
+
+                    /**
+                     * Swaps the elements at the specified positions in the specified list.
+                     */
+                    Collections.swap(list[position].cards, draggedPosition, targetPosition)
+                    // move item in `draggedPosition` to `targetPosition` in adapter.
+                    adapter.notifyItemMoved(draggedPosition, targetPosition)
+                    return false // true if moved, false otherwise
+                }
+
+                // Called when a ViewHolder is swiped by the user.
+                override fun onSwiped(
+                    viewHolder: RecyclerView.ViewHolder,
+                    direction: Int
+                ) { // remove from adapter
+                }
+
+                override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
+                    super.clearView(recyclerView, viewHolder)
+
+                    if (mPositionDraggedFrom != -1 && mPositionDraggedTo != -1 && mPositionDraggedFrom != mPositionDraggedTo) {
+
+                        (context as TaskListActivity).updateCardsInTaskList(
+                            position,
+                            list[position].cards
+                        )
+                    }
+
+                    // Reset the global variables
+                    mPositionDraggedFrom = -1
+                    mPositionDraggedTo = -1
+                }
+            })
+
+            /*Attaches the ItemTouchHelper to the provided RecyclerView. If TouchHelper is already
+            attached to a RecyclerView, it will first detach from the previous one.*/
+            helper.attachToRecyclerView(holder.itemView.rv_card_list)
 
         }
     }
