@@ -2,13 +2,17 @@ package com.example.digimanager.activities
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.graphics.Color
+import android.icu.text.SimpleDateFormat
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.digimanager.R
 import com.example.digimanager.adapters.CardMemberListItemsAdapter
@@ -18,6 +22,8 @@ import com.example.digimanager.firestore.FirestoreClass
 import com.example.digimanager.models.*
 import com.example.digimanager.utils.Constants
 import kotlinx.android.synthetic.main.activity_card_details.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CardDetailsActivity : BaseActivity() {
 
@@ -31,7 +37,10 @@ class CardDetailsActivity : BaseActivity() {
     private var mSelectedColor: String = ""
     // A global variable for Assigned Members List.
     private lateinit var mMembersDetailList: ArrayList<User>
+    // A global variable for selected due date
+    private var mSelectedDueDateMilliSeconds: Long = 0
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_card_details)
@@ -71,6 +80,32 @@ class CardDetailsActivity : BaseActivity() {
         // Call the function to setup the recyclerView for assigned members.
         setupSelectedMembersList()
 
+        tv_select_members.setOnClickListener {
+            membersListDialog()
+        }
+
+        //Set the due to if it is already selected before.
+        mSelectedDueDateMilliSeconds =
+            mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].dueDate
+        if (mSelectedDueDateMilliSeconds > 0) {
+            val simpleDateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+            val selectedDate = simpleDateFormat.format(Date(mSelectedDueDateMilliSeconds))
+            tv_select_due_date.text = selectedDate
+        }
+
+        // Add click event for selecting the due date.
+        tv_select_due_date.setOnClickListener {
+            showDataPicker()
+        }
+
+        btn_update_card_details.setOnClickListener {
+            if (et_name_card_details.text.toString().isNotEmpty()) {
+                updateCardDetails()
+            } else {
+                Toast.makeText(this@CardDetailsActivity, "Enter card name.", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
     }
 
     // Inflate the menu file here.
@@ -106,11 +141,13 @@ class CardDetailsActivity : BaseActivity() {
      */
     private fun updateCardDetails() {
         // Here we have updated the card name using the data model class.
+        // Here we have updated the card name using the data model class.
         val card = Card(
             et_name_card_details.text.toString(),
             mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].createdBy,
             mBoardDetails.taskList[mTaskListPosition].cards[mCardPosition].assignedTo,
-            mSelectedColor
+            mSelectedColor,
+            mSelectedDueDateMilliSeconds
         )
 
         val taskList : ArrayList<Task> = mBoardDetails.taskList
@@ -359,6 +396,58 @@ class CardDetailsActivity : BaseActivity() {
             tv_select_members.visibility = View.VISIBLE
             rv_selected_members_list.visibility = View.GONE
         }
+    }
+
+    /**
+     * The function to show the DatePicker Dialog and select the due date.
+     */
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun showDataPicker() {
+        /**
+         * This Gets a calendar using the default time zone and locale.
+         */
+        val c = Calendar.getInstance()
+        val year =
+            c.get(Calendar.YEAR) // Returns the value of the given calendar field. This indicates YEAR
+        val month = c.get(Calendar.MONTH) // This indicates the Month
+        val day = c.get(Calendar.DAY_OF_MONTH) // This indicates the Day
+
+        /**
+         * Creates a new date picker dialog for the specified date
+         */
+        val dpd = DatePickerDialog(
+            this,
+            DatePickerDialog.OnDateSetListener { view, year, monthOfYear, dayOfMonth ->
+                /*
+                  The listener used to indicate the user has finished selecting a date.
+                */
+
+                // Here we have appended 0 if the selected day is smaller than 10 to make it double digit value.
+                val sDayOfMonth = if (dayOfMonth < 10) "0$dayOfMonth" else "$dayOfMonth"
+                // Here we have appended 0 if the selected month is smaller than 10 to make it double digit value.
+                val sMonthOfYear =
+                    if ((monthOfYear + 1) < 10) "0${monthOfYear + 1}" else "${monthOfYear + 1}"
+
+                val selectedDate = "$sDayOfMonth/$sMonthOfYear/$year"
+                // Selected date it set to the TextView to make it visible to user.
+                tv_select_due_date.text = selectedDate
+
+
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH)
+
+                // The formatter will parse the selected date in to Date object
+                // so we can simply get date in to milliseconds.
+                val theDate = sdf.parse(selectedDate)
+
+                /** Here we have get the time in milliSeconds from Date object
+                 */
+                mSelectedDueDateMilliSeconds = theDate!!.time
+            },
+            year,
+            month,
+            day
+        )
+        dpd.show()
     }
 
 }
