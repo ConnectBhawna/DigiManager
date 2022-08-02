@@ -37,6 +37,10 @@ object Constants {
     const val SELECT: String = "Select"
     const val UN_SELECT: String = "UnSelect"
 
+    const val DIGIMANAGER_PREFERENCES: String = "ProjemanagPrefs"
+
+    const val FCM_TOKEN:String = "fcmToken"
+    const val FCM_TOKEN_UPDATED:String = "fcmTokenUpdated"
 
     fun showImageChooser(activity: Activity) {
         // An intent for launching the image selection of phone storage.

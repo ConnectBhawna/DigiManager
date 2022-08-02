@@ -51,7 +51,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
     //Import the firebase bom
     implementation platform('com.google.firebase:firebase-bom:30.1.0')
-
     //For using circular image
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
@@ -62,4 +61,6 @@ dependencies {
     //For firebase storage
     implementation 'com.google.firebase:firebase-storage:20.0.1'
 
+    //For firebase messaging service
+    implementation 'com.google.firebase:firebase-messaging:23.0.6'
 }
