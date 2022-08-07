@@ -24,6 +24,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
 - Added the dragging and dropping feature in task list🤩 
 - It supports dark theme too 🌗.
 
+### Problem it Solves 🤩 
+As we all know, Every year around 1800 new startup are build in India. So as a founder we need to have a Manager App for your company for scaling our product in the market. SO for this we need to hire a Mobile developer for making app and pay off pay in this as well. So here DigiManager solve the issue you can track the employees working task and all in the same app. 
+
 ### Insights into the app 🔎
 I built this app to demonstrate knowledge working in Kotlin and
 Firebase . This app was built using Kotlin and Firebase. This application supports user authenticatio using firebase.Users are able to create a new account using their email address and can then sign in to save coins to a user specific list. This is made possible by creating a firestore cloud storage database at the time of user registration. Another feature of this application is it offers light as well as dark theme. So now you can use DigiManager in whatever theme you like the most. Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button. DigiManager gives you notification on assigning as well as on completing the task. Then you will be able to achieve your long term goal.
@@ -102,6 +105,7 @@ Have a look at your running task, upcoming and completed tasks all in one place.
 
 
 ## Future Improvement ☠️
+- Changing the name of the app as per the user requirements. 
 - Add time timer feature and show graphs on the same.
 - Add to see all tasks organized in the calendar.
 - Adding Facebook authentication as well.
