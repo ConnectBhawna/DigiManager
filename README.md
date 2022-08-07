@@ -25,18 +25,17 @@ Clone the repository on your machine. Open the project on your IDE and connect i
 - It supports dark theme too 🌗.
 
 ### Insights into the app 🔎
+I built this app to demonstrate knowledge working in Kotlin and
+Firebase . This app was built using Kotlin and Firebase. This application supports user authenticatio using firebase.Users are able to create a new account using their email address and can then sign in to save coins to a user specific list. This is made possible by creating a firestore cloud storage database at the time of user registration. Another feature of this application is it offers light as well as dark theme. So now you can use DigiManager in whatever theme you like the most. Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button. DigiManager gives you notification on assigning as well as on completing the task. Then you will be able to achieve your long term goal.
 
-**DigiManager** offers light as well as dark theme 🌓. So now you can use DigiManager in whatever theme you like the most. 🔥
-**DigiManager** supports both email based and Social media authentication like Google authentication. Planning to add Facebook authentication too. 😁
-
-Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button.
-DigiManager lets you start a task ⌚ otherwise you get the notification of not completing the task. Then you will be not able to achieve your long time goal 😢.
 
 ## 📸 Demo
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
-- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..
+- [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..offers light as well as dark theme first_quarter_moon. So now you can use DigiManager in whatever theme you like the most. fire DigiManager supports both email based and Social media authentication like Google authentication. Planning to add Facebook authentication too. grin
+
+Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button. DigiManager lets you start a task watch otherwise you get the notification of not completing the task. Then you will be not able to achieve your long time goal cry.
 - [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/-flow/) - A cold asynchronous data stream that sequentially emits values and completes normally or with an exception.
  - [StateFlow](https://developer.android.com/kotlin/flow/stateflow-and-sharedflow) - StateFlow is a state-holder observable flow that emits the current and new state updates to its collectors.
 - [Android Architecture Components](https://developer.android.com/topic/libraries/architecture) - Collection of libraries that help you design robust, testable, and maintainable apps.
