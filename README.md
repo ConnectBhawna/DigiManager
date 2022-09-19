@@ -31,9 +31,6 @@ As we all know, Every year around 1800 new startup are build in India. So as a f
 I built this app to demonstrate knowledge working in Kotlin and
 Firebase . This app was built using Kotlin and Firebase. This application supports user authenticatio using firebase.Users are able to create a new account using their email address and can then sign in to save coins to a user specific list. This is made possible by creating a firestore cloud storage database at the time of user registration. Another feature of this application is it offers light as well as dark theme. So now you can use DigiManager in whatever theme you like the most. Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button. DigiManager gives you notification on assigning as well as on completing the task. Then you will be able to achieve your long term goal.
 
-
-## 📸 Demo
-
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
 - [Coroutines](https://kotlinlang.org/docs/reference/coroutines-overview.html) - For asynchronous and more..offers light as well as dark theme first_quarter_moon. So now you can use DigiManager in whatever theme you like the most. fire DigiManager supports both email based and Social media authentication like Google authentication. Planning to add Facebook authentication too. grin
