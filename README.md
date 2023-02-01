@@ -1,19 +1,117 @@
 <img src="https://github.com/Bhawna1203/DigiManager/blob/master/DigiManager.gif" align="centre" width="100%"/>
 
-# **DigiManager**💙  
+## 💙**DigiManager**💙  
 
 **DigiManager** is app that gives you the power to do more. It manages your daily tasks and boosts your productivity.
 
-# Application Install
+<br> <br> 
+
+## ⚙️ Application Install
 
 ***You can Install and test latest DigiManager app from below 👇***
 
 [![DigiManager](https://img.shields.io/badge/DigiManager✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/Bhawna1203/DigiManager/releases/tag/1.0.0)
 
-## Setup
-Clone the repository on your machine. Open the project on your IDE and connect it to firebase and add dependencies and everything will be setup
+<br> <br> 
 
-## About
+## ⚙️ Setup
+Clone the repository on your machine. Open the project on your IDE and connect it to firebase and add dependencies and everything will be setup.
+1. Clone the Repository Repo 
+
+   -  `https://github.com/ConnectBhawna/DigiManager`
+
+2. Open the Project in Android Studio. For installation Follow [this](https://developer.android.com/studio/install)
+
+3. Add the dependencies and connect with Firebase.
+
+4. Open `DigiManager App` into the Emulator or Physical Device.
+
+<br> <br> 
+
+
+## 📸 App Screenshots
+
+<table>
+  <tr>
+    <td>Splash Screen of the App</td>
+     <td>Starting Page </td>
+     <td>Sign-Up Page</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/Screen1.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen2.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen3.png" width=270 height=480></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Sign-In Page</td>
+     <td>Profile of User </td>
+     <td>User Task on Profile</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen4.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen5.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen6.png" width=270 height=480></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>SubTask of Task</td>
+     <td>Status of Task</td>
+     <td>Card Adding Under task</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen7.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen8.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen9.png" width=270 height=480></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Delete Task</td>
+     <td>Assign Task to User</td>
+     <td>Add Colour According to Priority</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen10.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen11.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen12.png" width=270 height=480></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Select Member</td>
+     <td>Completion Date</td>
+     <td>Profile Task Updation</td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen13.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen14.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen15.png" width=270 height=480></td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>Update Profile</td>
+    <td>Add Member in Team</td>
+     
+  </tr>
+  <tr>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen16.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen17.png" width=270 height=480></td>
+   
+  </tr>
+</table>
+
+<br> <br> 
+
+## About DigiManager
 
  It uses firebase for Storaging Data. It uses Firebase Authentication for email based auth and Google auth, Firebase Crashlytics for crash reporting.
 
@@ -24,12 +122,18 @@ Clone the repository on your machine. Open the project on your IDE and connect i
 - Added the dragging and dropping feature in task list🤩 
 - It supports dark theme too 🌗.
 
-### Problem it Solves 🤩 
+<br> <br> 
+
+## Problem it Solves 🤩 
 As we all know, Every year around 1800 new startup are build in India. So as a founder we need to have a Manager App for your company for scaling our product in the market. SO for this we need to hire a Mobile developer for making app and pay off pay in this as well. So here DigiManager solve the issue you can track the employees working task and all in the same app. 
 
-### Insights into the app 🔎
+<br> <br> 
+
+## Insights into the app 🔎
 I built this app to demonstrate knowledge working in Kotlin and
 Firebase . This app was built using Kotlin and Firebase. This application supports user authenticatio using firebase.Users are able to create a new account using their email address and can then sign in to save coins to a user specific list. This is made possible by creating a firestore cloud storage database at the time of user registration. Another feature of this application is it offers light as well as dark theme. So now you can use DigiManager in whatever theme you like the most. Have a look at your running task, upcoming and completed tasks all in one place. Create a task by pressing the button. DigiManager gives you notification on assigning as well as on completing the task. Then you will be able to achieve your long term goal.
+
+<br> <br>  
 
 ## Built With 🛠
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android development.
@@ -54,9 +158,10 @@ Have a look at your running task, upcoming and completed tasks all in one place.
 - [Timber](https://github.com/JakeWharton/timber) - A simple logging library for android.
 - [GSON Converter](https://github.com/square/retrofit/tree/master/retrofit-converters/gson) - A Converter which uses Moshi for serialization to and from JSON.
 - [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android focused on smooth scrolling
+<br> <br> 
 
 
-# Package Structure 👿
+## Package Structure 👿
     
     com.example.digimanager    # Root Package
     .
@@ -115,6 +220,6 @@ Have a look at your running task, upcoming and completed tasks all in one place.
 ---
 
  ## Contact
-If you need any help, you can connect with me.
+If you need any help, you can connect with me [here](https://linktr.ee/ConnectBhawna)
   
 
