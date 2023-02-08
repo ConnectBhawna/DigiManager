@@ -38,9 +38,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      <td>Sign-Up Page</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/Screen1.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen2.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen3.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/Screen1.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen2.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen3.png" width=270 height=480></td>
   </tr>
 </table>
 
@@ -51,9 +51,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      <td>User Task on Profile</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen4.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen5.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen6.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen4.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen5.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen6.png" width=270 height=480></td>
   </tr>
 </table>
 
@@ -64,9 +64,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      <td>Card Adding Under task</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen7.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen8.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen9.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen7.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen8.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen9.png" width=270 height=480></td>
   </tr>
 </table>
 
@@ -77,9 +77,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      <td>Add Colour According to Priority</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen10.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen11.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen12.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen10.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen11.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen12.png" width=270 height=480></td>
   </tr>
 </table>
 
@@ -90,9 +90,9 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      <td>Profile Task Updation</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen13.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen14.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen15.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen13.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen14.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen15.png" width=270 height=480></td>
   </tr>
 </table>
 
@@ -103,8 +103,8 @@ Clone the repository on your machine. Open the project on your IDE and connect i
      
   </tr>
   <tr>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen16.png" width=270 height=480></td>
-    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screen17.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen16.png" width=270 height=480></td>
+    <td><img src="https://github.com/ConnectBhawna/DigiManager/blob/master/screenshot/screen17.png" width=270 height=480></td>
    
   </tr>
 </table>
