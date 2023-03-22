@@ -10,7 +10,7 @@
 
 ***You can Install and test latest DigiManager app from below 👇***
 
-[![DigiManager](https://img.shields.io/badge/AssigmentHub✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/ConnectBhawna/DigiManager/blob/master/app-debug.apk)
+[![DigiManager](https://img.shields.io/badge/DigiManager✅-APK-red.svg?style=for-the-badge&logo=android)](https://github.com/ConnectBhawna/DigiManager/blob/master/app-debug.apk)
 <br> <br> 
 
 ## ⚙️ Setup
